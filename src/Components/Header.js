@@ -9,16 +9,19 @@ import { LOGO_URL } from "../Utils/constants";
 import { GptSearch } from "../Utils/GptSearchSlice";
 import { SUPPORTED_LANGUAGE_OPTIONS } from "../Utils/languageConst";
 import { changeLanguage } from "../Utils/configSlice";
+import { RemoveMovieId } from "../Utils/moviesSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const showGptSearch = useSelector((state) => state.gptSearch?.showGptSearch);
+  const movieDetailPage = useSelector((state) => state?.movies?.movieId);
   const handleClick = () => {
     signOut(auth)
       .then(() => {
         dispatch(removeUser());
+        dispatch(RemoveMovieId());
       })
       .catch((error) => {
         // An error happened.
@@ -29,6 +32,10 @@ const Header = () => {
   const handleGptButtonClick = () => {
     dispatch(GptSearch());
   };
+  const handleBackToHomePageClick = ()=>{
+    dispatch(RemoveMovieId());
+    navigate("/browse")
+  }
 
   const handleOnChange = (e) => {
     dispatch(changeLanguage(e.target.value));
@@ -48,7 +55,7 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
-        navigate("/browse");
+        !movieDetailPage ? navigate("/browse") : navigate("/moviedetail");
         // ...
       } else {
         // User is signed out
@@ -61,11 +68,11 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="w-full absolute bg-gradient-to-b from-black z-30 flex justify-between">
-      <img className="w-48" src={LOGO_URL} alt="logo" />
+    <div className="w-full absolute bg-gradient-to-b from-black z-30 flex flex-col md:flex-row justify-between">
+      <img className="h-14 w-48 mx-auto md:mx-0" src={LOGO_URL} alt="logo" />
       <div>
         {user && (
-          <div className="flex">
+          <div className="flex justify-between">
             {showGptSearch && (
               <select
                 className="bg-gray-500 text-white my-6 mx-3 rounded-lg"
@@ -76,14 +83,23 @@ const Header = () => {
                 ))}
               </select>
             )}
-            <button
-              className="w-24 my-6 mx-2 rounded-lg bg-blue-500"
-              onClick={handleGptButtonClick}
-            >
-              {!showGptSearch ? "GPT Search" : "Homepage"}
-            </button>
+            {!movieDetailPage ? (
+              <button
+                className="w-24 my-6 mx-2 rounded-lg bg-blue-500"
+                onClick={handleGptButtonClick}
+              >
+                {!showGptSearch ? "GPT Search" : "Homepage"}
+              </button>
+            ) : (
+              <button
+                className="w-24 my-6 mx-2 rounded-lg bg-blue-500"
+                onClick={handleBackToHomePageClick}
+              >
+                Homepage
+              </button>
+            )}
             <img
-              className="w-12 my-6 mx-2 rounded-lg"
+              className="w-12 my-6 mx-2 rounded-lg hidden md:block"
               src={user.photoURL}
               alt="avatar"
             />

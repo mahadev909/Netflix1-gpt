@@ -14,4 +14,7 @@ export const TMDB_API_OPTIONS = {
   },
 };
 
-export const TMDB_IMG_URL = "https://image.tmdb.org/t/p/w780"
+export const TMDB_IMG_URL = "https://image.tmdb.org/t/p/w780";
+
+export const OPENAI_API_KEY =
+  "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";

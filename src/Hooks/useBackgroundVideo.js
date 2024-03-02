@@ -12,8 +12,8 @@ const useBackgroundVideo = (movieId) => {
       TMDB_API_OPTIONS
     );
     const json = await backGroundVideo.json();
-    const filterData = json.results.filter((data) => data.type === "Trailer");
-    const trailer = filterData.length ? filterData[0] : json.results[0];
+    const filterData = json?.results?.filter((data) => data.type === "Trailer");
+    const trailer = filterData?.length ? filterData[0] : json?.results[0];
     dispatch(addTrailerVideo(trailer));
   };
 
