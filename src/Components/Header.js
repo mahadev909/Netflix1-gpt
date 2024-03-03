@@ -99,7 +99,7 @@ const Header = () => {
               </button>
             )}
             <img
-              className="w-12 my-6 mx-2 rounded-lg hidden md:block"
+              className="w-12 my-6 mx-2 text-white rounded-lg hidden md:block"
               src={user.photoURL}
               alt="avatar"
             />

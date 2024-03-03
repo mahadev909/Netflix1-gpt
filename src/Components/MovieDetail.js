@@ -7,19 +7,13 @@ import Header from "./Header";
 
 const MovieDetail = () => {
   const movie = useSelector((store) => store?.movies?.movieId);
-  //   return (
-  //     <div>
-  //       <VideoBackground movieId={movie?.id} />
-  //       {/* <VideoTitle /> */}
-  //     </div>
-  //   );
-  const trailerKey = useSelector((state) => state?.movies?.trailerVideo?.key);
   useBackgroundVideo(movie?.id);
+  const trailerKey = useSelector((state) => state?.movies?.trailerVideo?.key);
 
   return (
     <>
       <Header />
-      <div className="w-screen">
+      <div className="w-screen h-screen">
         <iframe
           className="w-screen aspect-video h-full"
           src={"https://www.youtube.com/embed/" + trailerKey + "?autoplay=1"}

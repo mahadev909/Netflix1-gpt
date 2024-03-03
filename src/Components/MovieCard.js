@@ -8,10 +8,10 @@ const MovieCard = ({ poster_path, movie }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleOnClick = () => {
-    console.log("ppopoppp");
-    dispatch(addMovieId(movie))
+    dispatch(addMovieId(movie));
     navigate("/moviedetail");
   };
+  if (!poster_path) return null;
   return (
     <div className="p-2 w-48 cursor-pointer">
       <img
