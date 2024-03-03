@@ -25,7 +25,7 @@ const Header = () => {
       })
       .catch((error) => {
         // An error happened.
-        navigate("/error");
+        navigate("/Netflix1-gpt/error");
       });
   };
 
@@ -34,7 +34,7 @@ const Header = () => {
   };
   const handleBackToHomePageClick = ()=>{
     dispatch(RemoveMovieId());
-    navigate("/browse")
+    navigate("/Netflix1-gpt/browse")
   }
 
   const handleOnChange = (e) => {
@@ -55,13 +55,13 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
-        !movieDetailPage ? navigate("/browse") : navigate("/moviedetail");
+        !movieDetailPage ? navigate("/Netflix1-gpt/browse") : navigate("/Netflix1-gpt/moviedetail");
         // ...
       } else {
         // User is signed out
         // ...
         dispatch(removeUser());
-        navigate("/");
+        navigate("/Netflix1-gpt");
       }
     });
     return () => unsubscribe();

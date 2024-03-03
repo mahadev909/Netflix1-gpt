@@ -7,15 +7,15 @@ import MovieDetail from "./MovieDetail";
 const Body = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/Netflix1-gpt",
       element: <Login />,
     },
     {
-      path: "/browse",
+      path: "/Netflix1-gpt/browse",
       element: <Browse />,
     },
     {
-      path: "/moviedetail",
+      path: "/Netflix1-gpt/moviedetail",
       element: <MovieDetail/>
     }
   ]);

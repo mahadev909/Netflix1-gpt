@@ -9,7 +9,7 @@ const VideoTitle = (props) => {
   const navigate = useNavigate();
 
   const handleOnClick = () => {
-    navigate("/moviedetail");
+    navigate("/Netflix1-gpt/moviedetail");
     dispatch(addMovieId(movie));
   };
   return (

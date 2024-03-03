@@ -9,7 +9,7 @@ const MovieCard = ({ poster_path, movie }) => {
   const dispatch = useDispatch();
   const handleOnClick = () => {
     dispatch(addMovieId(movie));
-    navigate("/moviedetail");
+    navigate("/Netflix1-gpt/moviedetail");
   };
   if (!poster_path) return null;
   return (

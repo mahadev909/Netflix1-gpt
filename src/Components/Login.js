@@ -97,7 +97,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img className="h-screen object-cover" src={LOGIN_PAGE_BACKGROUND} alt="background-img" />
+        <img className="h-screen w-screen object-cover" src={LOGIN_PAGE_BACKGROUND} alt="background-img" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
